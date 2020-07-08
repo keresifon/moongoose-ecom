@@ -22,7 +22,7 @@ function ProductDetails({ match }) {
 					<Col sm={6}>
 						<div className="display-4 font-weight-bold py-3">{product.name}</div>
 
-						<div className="h6  border-bottom text-danger">₦{product.price}</div>
+						<div className="h6  border-bottom text-danger">${product.price}</div>
 						<div className="py-1">Brand : {product.brand}</div>
 						<div className="py-3">{product.category}</div>
 						<div>
