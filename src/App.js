@@ -19,7 +19,7 @@ function App() {
       <Switch>
       <Route path="/products/:id" component={ProductDetails} />
       <Route path="/products" component={Products} />
-      <Route path="/home" component={Home} />
+      <Route path="/" component={Home} />
       </Switch>
       </div>
       <div className="p-5"></div>

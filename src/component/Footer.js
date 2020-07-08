@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 
 function Footer(props) {
   return (
-   
-    <Navbar bg="light" variant="light"   className="footer" >
+   <div className="container-fluid">
+    <Navbar bg="light" variant="light"   className="position-relative" >
     <Nav className="mr-auto">
     <Nav.Link>Copyright 2020 Phina</Nav.Link>
     </Nav>
@@ -15,6 +15,8 @@ function Footer(props) {
     </Nav>
     
   </Navbar>
+
+  </div>
   );
 }
 
