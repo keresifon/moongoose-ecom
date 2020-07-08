@@ -7,7 +7,7 @@ function Footer(props) {
    <div >
     <Navbar bg="dark" variant="dark"   className="position-relative" >
     <Nav className="mr-auto">
-    <Nav.Link>Copyright 2020 Phina</Nav.Link>
+    <Nav.Link>Copyright 2020 NoWahala.com</Nav.Link>
     </Nav>
     <Nav className="ml-auto">
       <Nav.Link as={Link} to="/">Home</Nav.Link>

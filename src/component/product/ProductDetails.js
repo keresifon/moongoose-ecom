@@ -22,12 +22,12 @@ function ProductDetails({ match }) {
 					<Col sm={6}>
 						<div className="display-4 font-weight-bold py-3">{product.name}</div>
 
-						<div className="h1 border-top border-bottom text-success">₦{product.price}</div>
-						<div className="py-3">Brand : {product.brand}</div>
+						<div className="h6  border-bottom text-danger">₦{product.price}</div>
+						<div className="py-1">Brand : {product.brand}</div>
 						<div className="py-3">{product.category}</div>
 						<div>
 							{' '}
-							<Button variant="success">Buy Now</Button>
+							<Button variant="secondary">Buy Now</Button>
 						</div>
 					</Col>
 				</Row>
@@ -48,7 +48,7 @@ function ProductDetails({ match }) {
 									</Card.Title>
 									<Card.Text>${product.price}</Card.Text>
 									<Card.Text>{product.category}</Card.Text>
-									<Button variant="success">Buy </Button>
+									<Button variant="secondary">Buy </Button>
 								</Card.Body>
 							</Card>
 						</div>
