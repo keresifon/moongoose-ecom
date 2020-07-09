@@ -40,3 +40,25 @@
     transform: rotate(360deg);
   }
 }
+
+
+.bg-mongoose-ecom {
+  background-color: white;
+  //border-bottom: 2px solid $dropdown-link-active-bg;
+}
+
+.bg-secondary {
+  background-color: #f6f9fc !important;
+}
+
+.bg-faded-info {
+  background-color: rgba(105,179,254,0.1) !important;
+}
+
+.bg-faded-warning {
+  background-color: rgba(254,165,105,0.1) !important;
+}
+
+.bg-faded-success {
+  background-color: rgba(66,214,151,0.1) !important;
+}
