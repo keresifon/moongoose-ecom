@@ -2,11 +2,13 @@ import React from 'react';
 import {  Media } from 'react-bootstrap';
 import Slide from './assets/Slide';
 import Footer from './Footer';
+import Products from './product/Products';
 
 function Home(props) {
 	return (
         <>
-		<div className="py-4 pt-md-5 bg-secondary vh-100">
+        <div className="vh-100">
+		<div className="py-4 pt-md-5 bg-secondary">
 			<div className="container py-xl-2">
 				<div className="row">
 					<div className="col-xl-9 pt-xl-4 order-xl-2">
@@ -58,6 +60,11 @@ function Home(props) {
 				</div>
 			</div>
 		</div>
+        <div className = "container">
+            <div className = "display-1">Trending products</div>
+            <div> </div>
+        </div>
+        </div>
          <Footer/>
          </>
 	);
