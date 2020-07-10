@@ -19,7 +19,8 @@ function Products(props) {
         <div className="col-sm-3" key={product._id}>
         
         <Card className="border-faded-warning">
-  <Card.Img variant="top" src={product.image} />
+        <Link to={`/products/${product._id}`}>
+  <Card.Img variant="top" src={product.image} /> </Link>
   <Card.Body>
     <Card.Title><Link to={`/products/${product._id}`}>{product.name}</Link></Card.Title>
     <Card.Text>
