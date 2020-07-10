@@ -15,7 +15,7 @@ function App() {
     <>
     <Layout>
    
-      <div className="vh-100">
+      <div className="pb-100">
       <Switch>
       <Route path="/products/:id" component={ProductDetails} />
       <Route path="/products" component={Products} />

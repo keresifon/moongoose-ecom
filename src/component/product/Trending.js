@@ -7,15 +7,15 @@ import { Link } from 'react-router-dom'
 
 
 
-
-function Products(props) {
+function Trending(props) {
+  const trending = data.products.filter(p => p.trending === true)
     return (
       <>
      <div>
-     <div className = "container display-4 body-content"> Products</div>
+     
         <div className="container md-5 " >
             <div className="row">
-            { data.products.map(product => 
+            { trending.map(product => 
         <div className="col-sm-3" key={product._id}>
         
         <Card className="border-faded-warning">
@@ -47,4 +47,4 @@ function Products(props) {
    
 }
 
-export default Products;
+export default Trending;

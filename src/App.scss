@@ -1,7 +1,22 @@
 @import "./node_modules/bootstrap/scss/bootstrap";
 
+* {
+  margin:0;
+  padding:0;
 
+}
 
+html, body {
+  height: 100%;
+}
+
+.footer {
+  position: relative;
+  height:50px;
+  margin-top:-50px;
+  clear: both;
+
+}
 .App {
   text-align: center;
 }
@@ -61,4 +76,8 @@
 
 .bg-faded-success {
   background-color: rgba(66,214,151,0.1) !important;
+}
+
+.border-faded-warning {
+  border-color: rgba(254, 165, 105, 0.26);;
 }

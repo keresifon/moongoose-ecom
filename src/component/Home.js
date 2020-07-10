@@ -1,13 +1,14 @@
 import React from 'react';
-import {  Media } from 'react-bootstrap';
+import {  Media, Button } from 'react-bootstrap';
 import Slide from './assets/Slide';
 import Footer from './Footer';
-import Products from './product/Products';
+import {Link} from 'react-router-dom'
+import Trending from './product/Trending';
 
 function Home(props) {
 	return (
-        <>
-        <div className="vh-100">
+       <div>
+        <div className="pb-100">
 		<div className="py-4 pt-md-5 bg-secondary">
 			<div className="container py-xl-2">
 				<div className="row">
@@ -61,12 +62,19 @@ function Home(props) {
 			</div>
 		</div>
         <div className = "container">
-            <div className = "display-1">Trending products</div>
-            <div> </div>
+			<div className = "row border-bottom ">
+            <div className = "h4 font-weight-bold     pt-5 col-md-4 mr-2  ">Trending products</div>
+            <div className=" col-md-4  pt-5 ml-auto  d-flex pb-4  justify-content-end" > <Button variant="outline-primary"> <Link to="/products">More Products</Link></Button></div>
+			</div>
+			
+			<div className = "pt-5 "><Trending /></div>
         </div>
         </div>
-         <Footer/>
-         </>
+		<div>
+			{/* <Footer/> */}
+		</div>
+		</div>  
+        
 	);
 }
 
