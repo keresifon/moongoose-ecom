@@ -1,6 +1,6 @@
 import React from 'react';
 import { Card , Button} from 'react-bootstrap'
-import data from '../data'
+import data from '../assets/data'
 import { Link } from 'react-router-dom'
 
 

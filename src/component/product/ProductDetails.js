@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Col, Row, Image, Button, Card } from 'react-bootstrap';
-import data from '../data';
+import data from '../assets/data';
 import { Link } from 'react-router-dom';
 
 function ProductDetails({ match }) {
@@ -27,7 +27,7 @@ function ProductDetails({ match }) {
 					<div className=""> {product.description}</div>
 				</Col>
 				<Col sm={4}>
-					<Card className="border-faded-warning">
+					<Card className="border-faded-warning w-50 bg-faded-warning">
 						{' '}
 						<Card.Body>
 							<Card.Title></Card.Title>
@@ -35,7 +35,7 @@ function ProductDetails({ match }) {
 							<Card.Text className="py-1">Status: <span className=" text-success">{product.status}</span></Card.Text>
 							<Card.Text className="py-1">
 								Qty: 
-								<select>
+								<select className=" custom-select-sm">
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -46,10 +46,10 @@ function ProductDetails({ match }) {
 							</Card.Text>
 
 							<Card.Text>
-								<Button variant="outline-primary">Add to Cart </Button>{' '}
+								<Button variant="outline-primary btn-block">Add to Cart </Button>{' '}
 							</Card.Text>
 							<Card.Text>
-								<Button variant="outline-primary">Buy Now</Button>
+								<Button variant="outline-primary btn-block">Buy Now</Button>
 							</Card.Text>
 						</Card.Body>
 					</Card>

@@ -1,7 +1,7 @@
 import React from 'react';
 import {  Media, Button } from 'react-bootstrap';
 import Slide from './assets/Slide';
-import Footer from './Footer';
+
 import {Link} from 'react-router-dom'
 import Trending from './product/Trending';
 
