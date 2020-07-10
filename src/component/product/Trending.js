@@ -18,7 +18,7 @@ function Trending(props) {
             { trending.map(product => 
         <div className="col-sm-3" key={product._id}>
         
-        <Card className="border-faded-warning">
+        <Card className="border-faded-warning rounded-lg">
         <Link to={`/products/${product._id}`}>
   <Card.Img variant="top" src={product.image} /> </Link>
   <Card.Body>
@@ -29,7 +29,7 @@ function Trending(props) {
     <Card.Text>
       {product.category}
     </Card.Text>
-    <Button variant="success">Buy  </Button>
+    <Button variant="outline-primary">Buy  </Button>
   </Card.Body>
 </Card>   
 

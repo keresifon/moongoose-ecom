@@ -29,7 +29,7 @@ function Products(props) {
     <Card.Text>
       {product.category}
     </Card.Text>
-    <Button variant="success">Buy  </Button>
+    <Button variant="outline-primary">Buy  </Button>
   </Card.Body>
 </Card>   
 

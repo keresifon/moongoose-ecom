@@ -9,6 +9,7 @@ export default  {
 			'https://res.cloudinary.com/kwesiblack/image/upload/v1594072607/products/chucks-153310__340_vflesl.png',
 		category: 'Shoes',
 		trending: true,
+		status: 'In Stock',
 	},
 	{
 		_id: '2' ,
@@ -17,9 +18,10 @@ export default  {
 		brand: 'Ray-Bann',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam purus nisl, faucibus interdum accumsan vitae, interdum sed felis. Aenean a elit pellentesque, vestibulum neque id, suscipit libero. Mauris posuere sit amet quam in venenatis. Donec convallis hendrerit consectetur. Etiam ac eros non ipsum tincidunt semper et et augue. In eget leo urna. Donec convallis, neque vel laoreet ultrices, magna ipsum congue dui, vel congue lacus massa ac mauris. Integer molestie scelerisque purus. Sed in vestibulum eros. In hac habitasse platea dictumst. Duis feugiat, nisl vitae vulputate consectetur, nisl metus tempus nisi, vel ornare enim risus id neque.',
 		image:
-			'https://res.cloudinary.com/kwesiblack/image/upload/v1594401296/products/woman-1246299__340-removebg-preview_s41kdq.png',
+			'https://res.cloudinary.com/kwesiblack/image/upload/v1594072606/products/woman-1246299__340_jgflly.jpg',
 		category: 'Accessories',
 		trending: true,
+		status: 'In Stock',
 	},
 	{
 		_id: '3',
@@ -28,9 +30,10 @@ export default  {
 		brand: 'Patek Philip',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam purus nisl, faucibus interdum accumsan vitae, interdum sed felis. Aenean a elit pellentesque, vestibulum neque id, suscipit libero. Mauris posuere sit amet quam in venenatis. Donec convallis hendrerit consectetur. Etiam ac eros non ipsum tincidunt semper et et augue. In eget leo urna. Donec convallis, neque vel laoreet ultrices, magna ipsum congue dui, vel congue lacus massa ac mauris. Integer molestie scelerisque purus. Sed in vestibulum eros. In hac habitasse platea dictumst. Duis feugiat, nisl vitae vulputate consectetur, nisl metus tempus nisi, vel ornare enim risus id neque.',
 		image:
-			'https://res.cloudinary.com/kwesiblack/image/upload/v1594401295/products/wrist-watch-2159351__340-removebg-preview_ilstka.png',
+			'https://res.cloudinary.com/kwesiblack/image/upload/v1594072606/products/wrist-watch-2159351__340_clhtdu.jpg',
 		category: 'Accessories',
 		trending: true,
+		status: 'In Stock',
 	},
 
 	{
@@ -42,6 +45,7 @@ export default  {
 		image:'https://res.cloudinary.com/kwesiblack/image/upload/v1594400596/products/model-600238__340-removebg-preview_ar4yyw.png',
 		category: 'Clothing',
 		trending: false,
+		status: 'In Stock',
 
 	},
 	{
@@ -54,6 +58,7 @@ export default  {
 			'https://res.cloudinary.com/kwesiblack/image/upload/v1594400898/products/fashion-2309519__340-removebg-preview_jfbdfu.png',
 		category: 'Hats',
 		trending: false,
+		status: 'In Stock',
 
 	},
 	{
@@ -65,6 +70,7 @@ export default  {
 		image:'https://res.cloudinary.com/kwesiblack/image/upload/v1594072607/products/chucks-153310__340_vflesl.png',
 		category: 'Shoes',
 		trending: false,
+		status: 'In Stock',
 
 	},
 	{
@@ -76,6 +82,7 @@ export default  {
 		image:'https://res.cloudinary.com/kwesiblack/image/upload/v1594400901/products/people-2563491__340-removebg-preview_avjvzl.png',
 		category: 'Clothing',
 		trending: false,
+		status: 'In Stock',
 
 	},
 	{
@@ -84,9 +91,10 @@ export default  {
 		price: 200,
 		brand: 'Patek Philip',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam purus nisl, faucibus interdum accumsan vitae, interdum sed felis. Aenean a elit pellentesque, vestibulum neque id, suscipit libero. Mauris posuere sit amet quam in venenatis. Donec convallis hendrerit consectetur. Etiam ac eros non ipsum tincidunt semper et et augue. In eget leo urna. Donec convallis, neque vel laoreet ultrices, magna ipsum congue dui, vel congue lacus massa ac mauris. Integer molestie scelerisque purus. Sed in vestibulum eros. In hac habitasse platea dictumst. Duis feugiat, nisl vitae vulputate consectetur, nisl metus tempus nisi, vel ornare enim risus id neque.',
-		image:'https://res.cloudinary.com/kwesiblack/image/upload/v1594401295/products/wrist-watch-2159351__340-removebg-preview_ilstka.png',
+		image:'https://res.cloudinary.com/kwesiblack/image/upload/v1594072606/products/wrist-watch-2159351__340_clhtdu.jpg',
 		category: 'Accessories',
 		trending: false,
+		status: 'In Stock',
 
 	},
 	{
@@ -95,9 +103,10 @@ export default  {
 		price: 200,
 		brand: 'Versace',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam purus nisl, faucibus interdum accumsan vitae, interdum sed felis. Aenean a elit pellentesque, vestibulum neque id, suscipit libero. Mauris posuere sit amet quam in venenatis. Donec convallis hendrerit consectetur. Etiam ac eros non ipsum tincidunt semper et et augue. In eget leo urna. Donec convallis, neque vel laoreet ultrices, magna ipsum congue dui, vel congue lacus massa ac mauris. Integer molestie scelerisque purus. Sed in vestibulum eros. In hac habitasse platea dictumst. Duis feugiat, nisl vitae vulputate consectetur, nisl metus tempus nisi, vel ornare enim risus id neque.',
-		image:'https://res.cloudinary.com/kwesiblack/image/upload/v1594401297/products/fashion-1063100__340-removebg-preview_gsviiz.png',
+		image:'https://res.cloudinary.com/kwesiblack/image/upload/v1594072607/products/fashion-1063100__340_zq91eo.jpg',
 		category: 'Clothing',
 		trending: true,
+		status: 'In Stock',
 	},
 	{
 		_id: '10',
@@ -105,9 +114,10 @@ export default  {
 		price: 200,
 		brand: 'Victoria Secrets',
 		description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam purus nisl, faucibus interdum accumsan vitae, interdum sed felis. Aenean a elit pellentesque, vestibulum neque id, suscipit libero. Mauris posuere sit amet quam in venenatis. Donec convallis hendrerit consectetur. Etiam ac eros non ipsum tincidunt semper et et augue. In eget leo urna. Donec convallis, neque vel laoreet ultrices, magna ipsum congue dui, vel congue lacus massa ac mauris. Integer molestie scelerisque purus. Sed in vestibulum eros. In hac habitasse platea dictumst. Duis feugiat, nisl vitae vulputate consectetur, nisl metus tempus nisi, vel ornare enim risus id neque.',
-		image:'https://res.cloudinary.com/kwesiblack/image/upload/v1594400897/products/girl-1868930__340-removebg-preview_acyvko.png',
+		image:'https://res.cloudinary.com/kwesiblack/image/upload/v1594416688/products/girl-1868930__340_r2dejv.jpg',
 		category: 'Accessories',
 		trending: true,
+		status: 'In Stock',
 	},
 ],
 }

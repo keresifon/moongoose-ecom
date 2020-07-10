@@ -11,43 +11,67 @@ function ProductDetails({ match }) {
 	console.log(catproduct);
 
 	return (
-		<Container fluid="sm">
-			<Row>
-				<Col sm={6}>
+		<Container fluid >
+			<Row className="pb-3">
+				<Col sm={4}>
 					{' '}
-					<Image src={product.image} alt="" className="img-fluid" />
+					<Image src={product.image} alt="" className="img-fluid ml-6" />
 				</Col>
-				<Col sm={6}>
-					<div className="display-3 font-weight-bold py-3">{product.name}</div>
+				<Col sm={4}>
+					<div className="h4  py-3">{product.name}</div>
 
-					<div className="h6  border-bottom text-danger">${product.price}</div>
+					<div className="font-weight-bold  border-bottom text-danger">${product.price}</div>
 					<div className="py-1">Brand : {product.brand}</div>
 					<div className="py-3">{product.category}</div>
-					<div>
+					<div className="">Description</div>
+					<div className=""> {product.description}</div>
+				</Col>
+				<Col sm={4}>
+					<Card className="border-faded-warning">
 						{' '}
-						<Button variant="secondary">Buy Now</Button>
-					</div>
+						<Card.Body>
+							<Card.Title></Card.Title>
+							<Card.Text className="py-1 text-danger">Price: ${product.price}</Card.Text>
+							<Card.Text className="py-1">Status: <span className=" text-success">{product.status}</span></Card.Text>
+							<Card.Text className="py-1">
+								Qty: 
+								<select>
+									<option>1</option>
+									<option>2</option>
+									<option>3</option>
+									<option>4</option>
+									<option>5</option>
+									<option>6</option>
+								</select>
+							</Card.Text>
+
+							<Card.Text>
+								<Button variant="outline-primary">Add to Cart </Button>{' '}
+							</Card.Text>
+							<Card.Text>
+								<Button variant="outline-primary">Buy Now</Button>
+							</Card.Text>
+						</Card.Body>
+					</Card>
 				</Col>
 			</Row>
-			<Row className="py-5">
-				<Col>
-					<div className="display-4">Description</div>
-					<div className="display-5">{product.description}</div>
-				</Col>
+			<Row className="p-3 border-top">
+				<Col></Col>
 			</Row>
-			<Row>
+			<Row >
 				{catproduct.map((product) => (
-					<div className="col-sm-4" key={product._id}>
+					<div className="col-sm-2" key={product._id}>
 						<Card className="border-faded-warning">
 							<Link to={`/products/${product._id}`}>
-							<Card.Img variant="top" src={product.image} /></Link>
+								<Card.Img variant="top" src={product.image} />
+							</Link>
 							<Card.Body>
 								<Card.Title>
 									<Link to={`/products/${product._id}`}>{product.name}</Link>
 								</Card.Title>
 								<Card.Text>${product.price}</Card.Text>
 								<Card.Text>{product.category}</Card.Text>
-								<Button variant="secondary">Buy </Button>
+								<Button variant="outline-primary">Buy </Button>
 							</Card.Body>
 						</Card>
 					</div>
