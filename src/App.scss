@@ -81,3 +81,22 @@ html, body {
 .border-faded-warning {
   border-color: rgba(254, 165, 105, 0.26);;
 }
+
+.border-secondary{
+  border-color: #f6f9fc !important;
+}
+/* Sidebar */
+.harmburger {
+  //font-size: 3rem;
+  padding: .5rem;
+  //background: none;
+  border:none;
+  //color:white;
+  cursor: pointer;
+
+}
+.sidebar {
+  position: fixed;
+  transform: translateX(-30rem);
+  width: 30rem;
+}

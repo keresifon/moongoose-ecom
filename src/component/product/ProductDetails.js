@@ -1,38 +1,68 @@
-import React from 'react';
+import React, {useEffect , useState } from 'react';
 import { Container, Col, Row, Image, Button, Card } from 'react-bootstrap';
-import data from '../assets/data';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 
-function ProductDetails({ match }) {
-	const productId = match.params.id;
-	const product = data.products.find((p) => p._id === productId);
-	const catproduct = data.products.filter((cat) => cat.category === product.category && cat._id !== productId);
 
-	console.log(catproduct);
+
+
+function ProductDetails({match}) {
+
+	const [products, setProduct] = useState([]);
+	const [catProducts, setCatProduct] = useState([]);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			const { data } = await axios.get('/api/products');
+			const productId = match.params.id;
+			const product = data.find((p) => p._id === productId);
+
+			setProduct(product);
+		};
+		fetchData();
+		//return () => {};
+  }, [match.params.id]);
+  
+  useEffect(() => {
+	const fetchCatData = async () => {
+		const { data } = await axios.get('/api/products');
+		
+
+		setCatProduct(data);
+	};
+	fetchCatData();
+	//return () => {};
+}, [match.params.id]);
+	
+	
+	const catproduct = catProducts.filter((cat) => cat.category === products.category && cat._id !== match.params.id);
+
+	
 
 	return (
-		<Container fluid >
+
+		
+		<Container fluid className="pt-3">
 			<Row className="pb-3">
-				<Col sm={4}>
+				  <Col sm={4}>
 					{' '}
-					<Image src={product.image} alt="" className="img-fluid ml-6" />
+					<Image src={products.image} alt="" className="img-fluid ml-6" />
 				</Col>
 				<Col sm={4}>
-					<div className="h4  py-3">{product.name}</div>
-
-					<div className="font-weight-bold  border-bottom text-danger">${product.price}</div>
-					<div className="py-1">Brand : {product.brand}</div>
-					<div className="py-3">{product.category}</div>
+					<div className="h4  py-3">{products.name}</div>
+					<div className="font-weight-bold  border-bottom text-danger">${products.price}</div>
+					<div className="py-1">Brand : {products.brand}</div>
+					<div className="py-3">{products.category}</div>
 					<div className="">Description</div>
-					<div className=""> {product.description}</div>
+					<div className=""> {products.description}</div>
 				</Col>
 				<Col sm={4}>
 					<Card className="border-faded-warning w-50 bg-faded-warning">
 						{' '}
 						<Card.Body>
 							<Card.Title></Card.Title>
-							<Card.Text className="py-1 text-danger">Price: ${product.price}</Card.Text>
-							<Card.Text className="py-1">Status: <span className=" text-success">{product.status}</span></Card.Text>
+							<Card.Text className="py-1 text-danger">Price: ${products.price}</Card.Text>
+							<Card.Text className="py-1">Status: <span className=" text-success">{products.status}</span></Card.Text>
 							<Card.Text className="py-1">
 								Qty: 
 								<select className=" custom-select-sm">
@@ -53,13 +83,13 @@ function ProductDetails({ match }) {
 							</Card.Text>
 						</Card.Body>
 					</Card>
-				</Col>
+				</Col>   
 			</Row>
 			<Row className="p-3 border-top">
 				<Col></Col>
 			</Row>
 			<Row >
-				{catproduct.map((product) => (
+				 {catproduct.map((product) => (
 					<div className="col-sm-2" key={product._id}>
 						<Card className="border-faded-warning">
 							<Link to={`/products/${product._id}`}>
@@ -75,9 +105,10 @@ function ProductDetails({ match }) {
 							</Card.Body>
 						</Card>
 					</div>
-				))}
+				))} 
 			</Row>
 		</Container>
+	
 	);
 }
 

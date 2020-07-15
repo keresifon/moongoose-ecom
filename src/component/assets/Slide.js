@@ -8,11 +8,11 @@ function Slide(props) {
 				<Container>
 					<Row>
 						<Col >
-            <div class="col-lg-5 col-md-6 offset-lg-1 order-md-1 pt-4 pb-md-4 text-center text-md-left">
-                      <h2 class="font-weight-light pb-1 from-bottom">Check </h2>
-                      <h1 class="display-4 from-bottom delay-1">Smartphones</h1>
-                      <h5 class="font-weight-light pb-3 from-bottom delay-2"> </h5>
-                      <a class="btn btn-primary btn-shadow scale-up delay-4" href="shop-grid-ls.html">Shop Now<i class="czi-arrow-right ml-2 mr-n1"></i></a>
+            <div className="col-lg-5 col-md-6 offset-lg-1 order-md-1 pt-4 pb-md-4 text-center text-md-left">
+                      <h2 className="font-weight-light pb-1 from-bottom">Check </h2>
+                      <h1 className="display-4 from-bottom delay-1">Smartphones</h1>
+                      <h5 className="font-weight-light pb-3 from-bottom delay-2"> </h5>
+                      <a className="btn btn-primary btn-shadow scale-up delay-4" href="shop-grid-ls.html">Shop Now<i className="czi-arrow-right ml-2 mr-n1"></i></a>
                     </div>
 							
 						</Col>
@@ -30,11 +30,11 @@ function Slide(props) {
 				<Container>
 					<Row>
 						<Col>
-            <div class="col-lg-5 col-md-6 offset-lg-1 order-md-1 pt-4 pb-md-4 text-center text-md-left">
-                      <h2 class="font-weight-light pb-1 from-bottom">Exlore </h2>
-                      <h1 class="display-4 from-bottom delay-1">VR Collection</h1>
-                      <h5 class="font-weight-light pb-3 from-bottom delay-2"> </h5>
-                      <a class="btn btn-primary btn-shadow scale-up delay-4" href="shop-grid-ls.html">Shop Now<i class="czi-arrow-right ml-2 mr-n1"></i></a>
+            <div className="col-lg-5 col-md-6 offset-lg-1 order-md-1 pt-4 pb-md-4 text-center text-md-left">
+                      <h2 className="font-weight-light pb-1 from-bottom">Exlore </h2>
+                      <h1 className="display-4 from-bottom delay-1">VR Collection</h1>
+                      <h5 className="font-weight-light pb-3 from-bottom delay-2"> </h5>
+                      <a className="btn btn-primary btn-shadow scale-up delay-4" href="shop-grid-ls.html">Shop Now<i className="czi-arrow-right ml-2 mr-n1"></i></a>
                     </div>
 						</Col>
 						<Col md="auto">
@@ -51,11 +51,11 @@ function Slide(props) {
 				<Container>
 					<Row>
 						<Col>
-            <div class="col-lg-5 col-md-6 offset-lg-1 order-md-1 pt-4 pb-md-4 text-center text-md-left">
-                      <h2 class="font-weight-light pb-1 from-bottom">Music</h2>
-                      <h1 class="display-4 from-bottom delay-1">Headphones</h1>
-                      <h5 class="font-weight-light pb-3 from-bottom delay-2"> </h5>
-                      <a class="btn btn-primary btn-shadow scale-up delay-4" href="shop-grid-ls.html">Shop Now<i class="czi-arrow-right ml-2 mr-n1"></i></a>
+            <div className="col-lg-5 col-md-6 offset-lg-1 order-md-1 pt-4 pb-md-4 text-center text-md-left">
+                      <h2 className="font-weight-light pb-1 from-bottom">Music</h2>
+                      <h1 className="display-4 from-bottom delay-1">Headphones</h1>
+                      <h5 className="font-weight-light pb-3 from-bottom delay-2"> </h5>
+                      <a className="btn btn-primary btn-shadow scale-up delay-4" href="shop-grid-ls.html">Shop Now<i className="czi-arrow-right ml-2 mr-n1"></i></a>
                     </div>
 						</Col>
 						<Col md="auto">

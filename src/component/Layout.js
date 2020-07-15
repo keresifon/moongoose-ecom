@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './NavBar';
+import NavBarIn from './NavBarIn';
 import Footer from './Footer';
 
 
@@ -8,7 +8,7 @@ function Layout(props) {
     return (
      <>
      <div  className="pb-100">
-     <NavBar />
+     <NavBarIn />
        <div >
        <div>&nbsp;</div>
        <div>{props.children}</div>

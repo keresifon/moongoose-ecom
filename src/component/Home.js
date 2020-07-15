@@ -40,7 +40,7 @@ function Home(props) {
 							/>
 							<Media.Body className="py-4 px-2">
                             <h5 className="mb-2"><span className="font-weight-light">Next Gen</span><br/>Video <span className="font-weight-light">with</span><br/>360 Cam</h5>
-                            <div class="text-info font-size-sm">Shop now<i class="czi-arrow-right font-size-xs ml-1"></i></div>
+                            <div className="text-info font-size-sm">Shop now<i className="czi-arrow-right font-size-xs ml-1"></i></div>
 							</Media.Body>
 						</Media>
 						<div className="py-2"></div>
@@ -53,8 +53,8 @@ function Home(props) {
 								alt="Generic placeholder"
 							/>
 							<Media.Body className="py-4 px-2">
-                            <h5 class="mb-2"><span className="font-weight-light">Catch Big</span><br/>Deals <span className="font-weight-light">on</span><br/>Earbuds</h5>
-                            <div class="text-success font-size-sm">Shop now<i class="czi-arrow-right font-size-xs ml-1"></i></div>
+                            <h5 className="mb-2"><span className="font-weight-light">Catch Big</span><br/>Deals <span className="font-weight-light">on</span><br/>Earbuds</h5>
+                            <div className="text-success font-size-sm">Shop now<i className="czi-arrow-right font-size-xs ml-1"></i></div>
 							</Media.Body>
 						</Media>
 					</div>
