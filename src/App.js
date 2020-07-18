@@ -7,6 +7,7 @@ import ProductDetails from './component/product/ProductDetails'
 import Home from './component/Home';
 import Footer from './component/Footer';
 import ProductCategory from './component/product/ProductCategory';
+import Cart from './component/product/Cart';
 
 
 
@@ -22,6 +23,8 @@ function App() {
       <Route path="/products/:id" component={ProductDetails} />
       <Route  path="/product/:category" component={ProductCategory} />
       <Route path="/products" component={Products} />
+      <Route path="/cart/:id?" component={Cart} />
+
       <Route path="/" component={Home} />
       </Switch>
       </div>

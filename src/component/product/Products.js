@@ -37,7 +37,7 @@ function Products(props) {
 											<Link to={`/products/${product._id}`}>{product.name}</Link>
 										</Card.Title>
 										<Card.Text>${product.price}</Card.Text>
-										<Card.Text><Link to={`/product/${product.category}`}>{product.category}</Link></Card.Text>
+										<Card.Text className="text-small"><Link to={`/product/${product.category}`}>{product.category}</Link></Card.Text>
 										<Button variant="outline-primary">Buy </Button>
 									</Card.Body>
 								</Card>

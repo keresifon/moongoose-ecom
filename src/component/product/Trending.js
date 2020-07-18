@@ -39,7 +39,7 @@ function Trending(props) {
     <Card.Text>
       ${product.price}
     </Card.Text>
-    <Card.Text>
+    <Card.Text className="text-small">
     <Link to={`/product/${product.category}`}>
       {product.category}
       </Link>

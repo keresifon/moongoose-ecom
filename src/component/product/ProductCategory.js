@@ -1,5 +1,5 @@
 import React, {useEffect , useState } from 'react';
-import { Container, Col, Row, Image, Button, Card } from 'react-bootstrap';
+import {  Button, Card } from 'react-bootstrap';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -44,7 +44,7 @@ function ProductCategory({match}) {
 									<Link to={`/products/${product._id}`}>{product.name}</Link>
 								</Card.Title>
 								<Card.Text>${product.price}</Card.Text>
-								<Card.Text>{product.category}</Card.Text>
+								<Card.Text className="text-small">{product.category}</Card.Text>
 								<Button variant="outline-primary">Buy </Button>
 							</Card.Body>
 						</Card>

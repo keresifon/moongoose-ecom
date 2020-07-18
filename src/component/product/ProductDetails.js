@@ -6,10 +6,11 @@ import { Link } from 'react-router-dom';
 
 
 
-function ProductDetails({match}) {
+function ProductDetails({match, history}) {
 
 	const [products, setProduct] = useState([]);
 	const [catProducts, setCatProduct] = useState([]);
+	const [qty , setQty] = useState(1)
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -34,9 +35,15 @@ function ProductDetails({match}) {
 	//return () => {};
 }, [match.params.id]);
 	
+const handleAddToCart = () => {
+	history.push("/cart/" + match.params.id + "?qty=" + qty )
+}
 	
 	const catproduct = catProducts.filter((cat) => cat.category === products.category && cat._id !== match.params.id);
 
+
+
+	
 	
 
 	return (
@@ -52,7 +59,7 @@ function ProductDetails({match}) {
 					<div className="h4  py-3">{products.name}</div>
 					<div className="font-weight-bold  border-bottom text-danger">${products.price}</div>
 					<div className="py-1">Brand : {products.brand}</div>
-					<div className="py-3">{products.category}</div>
+					<div className="py-3 text-small">{products.category}</div>
 					<div className="">Description</div>
 					<div className=""> {products.description}</div>
 				</Col>
@@ -62,24 +69,22 @@ function ProductDetails({match}) {
 						<Card.Body>
 							<Card.Title></Card.Title>
 							<Card.Text className="py-1 text-danger">Price: ${products.price}</Card.Text>
-							<Card.Text className="py-1">Status: <span className=" text-success">{products.status}</span></Card.Text>
+							<Card.Text className="py-1">Status: <span className=" text-success">{products.countInStock > 0 ? "In Stock" : "Out of Stock"}</span></Card.Text>
 							<Card.Text className="py-1">
 								Qty: 
-								<select className=" custom-select-sm">
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
-									<option>5</option>
-									<option>6</option>
+								<select className=" custom-select-sm" value={qty} onChange={(e) => {setQty(e.target.value)}}>
+									{[...Array(products.countInStock).keys()].map( x => 
+									<option key ={x + 1} value={x+1}>{x+1}</option>
+										)}
+									
 								</select>
 							</Card.Text>
 
 							<Card.Text>
-								<Button variant="outline-primary btn-block">Add to Cart </Button>{' '}
+								{ products.countInStock > 0 && <Button variant="outline-primary btn-block" onClick={handleAddToCart}>Add to Cart </Button>}
 							</Card.Text>
 							<Card.Text>
-								<Button variant="outline-primary btn-block">Buy Now</Button>
+							{ products.countInStock > 0 && <Button variant="outline-primary btn-block">Buy Now</Button>}
 							</Card.Text>
 						</Card.Body>
 					</Card>
@@ -100,8 +105,8 @@ function ProductDetails({match}) {
 									<Link to={`/products/${product._id}`}>{product.name}</Link>
 								</Card.Title>
 								<Card.Text>${product.price}</Card.Text>
-								<Card.Text>{product.category}</Card.Text>
-								<Button variant="outline-primary">Buy </Button>
+								<Card.Text className="text-small" >{product.category}</Card.Text>
+								<Button variant="outline-primary" >Buy </Button>
 							</Card.Body>
 						</Card>
 					</div>
