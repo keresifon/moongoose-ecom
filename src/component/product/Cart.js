@@ -1,64 +1,35 @@
-import React, { useEffect } from 'react';
-import { Container, Col, Row, Button, Card } from 'react-bootstrap';
-import { addToCart } from '../../actions/cartActions';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useContext } from 'react';
+import { CartContext } from '../../CartContext';
 
-function Cart({ match, location }) {
-	const cart = useSelector((state) => state.cart);
-	const { cartItems } = cart;
-	const productId = match.params.id;
-	const qty = location.search ? Number(location.search.split('=')[1]) : 1;
-	const dispatch = useDispatch();
+import { Container, Col, Row, Button, Card , Image } from 'react-bootstrap';
 
-	useEffect(() => {
-		if (productId) {
-			dispatch(addToCart(productId, qty));
-		}
-	});
-
+function Cart() {
+	const [cart, setCart] = useContext(CartContext);
+  console.log(cart)
 	return (
-		<Container fluid className=" display-4 body-content">
-			<Row className="border-bottom ">
-				<Col className="h4 font-weight-bold     pt-3 col-md-4 mr-2  "> Cart </Col>
-			</Row>
-			<Row>
-				<Col sm={8}>
-					{cartItems.length === 0 ? (
-						<div>Cart is Empty</div>
-					) : (
-						cartItems.map((item) => (
-							<div key={item._id}>
-								<div>
-									<img scr={item.image} alt="product" />
-								</div>
-								<div>{item.name}</div>
-								<div>
-									Qty:
-									<select>
-										<option value="1">1</option>
-										<option value="2">1</option>
-										<option value="3">1</option>
-									</select>
-								</div>
-								<div>{item.price}</div>
-							</div>
-						))
-					)}
-				</Col>
-				<Col sm={4} className="pt-3">
-					<Card className="border-faded-warning w-50 bg-faded-warning">
-						<Card.Body>
-							<Card.Title></Card.Title>
-							<Card.Text className="py-1 text-danger">Price: </Card.Text>
-
-							<Card.Text>
-								<Button variant="outline-primary btn-block">CheckOut </Button>
-							</Card.Text>
-						</Card.Body>
-					</Card>
-				</Col>
-			</Row>
-		</Container>
+		<div className="container-fluid">
+			<div> items in cart : {cart.length} </div>
+			<div>total price : 0 </div>
+           <div>
+		   <Container fluid>
+			   <Row>
+				   <Col></Col>
+				   <Col></Col>
+				   <Col>Price</Col>
+			   </Row>
+   {cart.map(item=>
+  <Row className="pb-3">
+    <Col sm={1}><Image src={item.image} alt="" className="img-fluid ml-6 " /></Col>
+	<Col><div>{item.name}</div>
+   <div>{item.qty}</div>
+	</Col>
+    <Col>{item.price*item.qty}</Col>
+    
+  </Row>
+   )}
+</Container>
+		   </div>
+		</div>
 	);
 }
 
