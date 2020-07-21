@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import http from '../../services/httpService';
 
 function Products(props) {
 	const [products, setProduct] = useState([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const { data } = await axios.get('/api/products');
+			const { data } = await http.get('/api/products');
 			setProduct(data);
 		};
 		fetchData();

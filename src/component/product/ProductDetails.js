@@ -1,8 +1,9 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Container, Col, Row, Image, Button, Card } from 'react-bootstrap';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
 import {CartContext}  from '../../CartContext';
+
+import http from '../../services/httpService';
 
 
 
@@ -14,7 +15,7 @@ function ProductDetails(props) {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const { data } = await axios.get('/api/products');
+			const { data } = await http.get('/api/products');
 			const productId = props.match.params.id;
 			const product = data.find((p) => p._id === productId);
 
@@ -26,7 +27,7 @@ function ProductDetails(props) {
 
 	useEffect(() => {
 		const fetchCatData = async () => {
-			const { data } = await axios.get('/api/products');
+			const { data } = await http.get('/api/products');
 
 			setCatProduct(data);
 		};

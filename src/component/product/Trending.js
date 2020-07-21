@@ -2,6 +2,7 @@ import React, {useState, useEffect } from 'react';
 import { Card , Button} from 'react-bootstrap'
 import axios from 'axios';
 import { Link } from 'react-router-dom'
+import http from '../../services/httpService'
 
 
 
@@ -12,15 +13,16 @@ function Trending(props) {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const { data } = await axios.get('/api/products');
+			const { data } = await http.get('/api/products');
 			setProduct(data);
 		};
 		fetchData();
 		//return () => {};
   }, []);
   
-
+console.log ("Products:", products)
   const trending = products.filter(p => p.trending === true)
+  console.log("Trending:", trending)
     return (
       <>
      <div>

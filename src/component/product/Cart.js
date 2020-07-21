@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { CartContext } from '../../CartContext';
 
-import { Container, Col, Row, Button, Card , Image } from 'react-bootstrap';
+import { Container, Col, Row,  Image } from 'react-bootstrap';
 
 function Cart() {
 	const [cart, setCart] = useContext(CartContext);

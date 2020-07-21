@@ -1,7 +1,7 @@
 import React, {useEffect , useState } from 'react';
 import {  Button, Card } from 'react-bootstrap';
-import axios from 'axios';
 import { Link } from 'react-router-dom';
+import http from '../../services/httpService'
 
 function ProductCategory({match}) {
 
@@ -10,7 +10,7 @@ function ProductCategory({match}) {
 
     useEffect(() => {
         const fetchCatData = async () => {
-        const { data } = await axios.get('/api/products');
+        const { data } = await http.get('/api/products');
         
             setProduct(data);
         };
