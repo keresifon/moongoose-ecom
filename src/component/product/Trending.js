@@ -1,8 +1,8 @@
-import React, {useState, useEffect } from 'react';
+import React, {useState, useEffect, useContext } from 'react';
 import { Card , Button} from 'react-bootstrap'
-import axios from 'axios';
 import { Link } from 'react-router-dom'
 import http from '../../services/httpService'
+import { CartContext } from '../../CartContext';
 
 
 
@@ -10,6 +10,8 @@ import http from '../../services/httpService'
 
 function Trending(props) {
   const [products, setProduct] = useState([]);
+  const [cart, setCart] = useContext(CartContext);
+	const [qty, setQty] = useState(1);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -19,10 +21,16 @@ function Trending(props) {
 		fetchData();
 		//return () => {};
   }, []);
+
+  const  addToCart =  (product) => {
+		const cartItem = {name: product.name, image: product.image, price: product.price, qty: qty}
+		setCart( cart => [...cart, cartItem]);
+	   
+		 };
   
-console.log ("Products:", products)
+
   const trending = products.filter(p => p.trending === true)
-  console.log("Trending:", trending)
+  
     return (
       <>
      <div>
@@ -46,7 +54,7 @@ console.log ("Products:", products)
       {product.category}
       </Link>
     </Card.Text>
-    <Button variant="outline-primary">Buy  </Button>
+    <Button variant="outline-primary" onClick={() => addToCart(product)}>Add To Cart  </Button>
   </Card.Body>
 </Card>   
 

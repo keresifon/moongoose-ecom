@@ -35,13 +35,10 @@ function ProductDetails(props) {
 		//return () => {};
 	}, [props.match.params.id]);
 
-	const  addToCart =  () => {
-		//console.log("Clicked")
-        const cartItem = {name: products.name, image: products.image, price: products.price, qty: qty}
-	
-		
+   const  addToCart =  () => {
+   const cartItem = {name: products.name, image: products.image, price: products.price, qty: qty}
    setCart( cart => [...cart, cartItem]);
-  props.history.push("/cart/" + props.match.params.id + "?qty=" + qty )
+  //props.history.push("/cart/" + props.match.params.id + "?qty=" + qty )
 	};
 
 	const catproduct = catProducts.filter(
@@ -77,6 +74,7 @@ function ProductDetails(props) {
 									{products.countInStock > 0 ? 'In Stock' : 'Out of Stock'}
 								</span>
 							</Card.Text>
+							{products.countInStock > 0 && (	
 							<Card.Text className="py-1">
 								Qty:
 								<select
@@ -93,6 +91,7 @@ function ProductDetails(props) {
 									))}
 								</select>
 							</Card.Text>
+							)}
 
 							<Card.Text>
 								{products.countInStock > 0 && (
@@ -126,7 +125,7 @@ function ProductDetails(props) {
 								</Card.Title>
 								<Card.Text>${product.price}</Card.Text>
 								<Card.Text className="text-small">{product.category}</Card.Text>
-								<Button variant="outline-primary">Buy </Button>
+								{/* <Button variant="outline-primary">Buy </Button> */}
 							</Card.Body>
 						</Card>
 					</div>

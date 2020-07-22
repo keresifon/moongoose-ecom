@@ -1,9 +1,12 @@
-import React from 'react';
+import React , {useContext} from 'react';
 import {Link } from 'react-router-dom'
 import { Navbar, Nav,  FormControl, Form, Button  } from 'react-bootstrap';
+import { FaShoppingCart } from "react-icons/fa";
+import { CartContext } from '../CartContext';
 
 
 function NavBar(props) {
+  const [cart, setCart] = useContext(CartContext);
     return (
       <>
       <Navbar bg="dark" variant="dark">
@@ -22,6 +25,9 @@ function NavBar(props) {
         <Nav.Link as={Link} to="/products">Shop</Nav.Link>
        
       </Nav>
+      <Nav className="ml-auto ">
+      <Nav.Link as={Link} to="/cart"><FaShoppingCart className="h4" />{cart.length}</Nav.Link>
+        </Nav>
       </div>
       <Form inline>
         <FormControl type="text" placeholder="Search" className="mr-sm-2" />

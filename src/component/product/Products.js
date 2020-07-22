@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import http from '../../services/httpService';
+import {CartContext}  from '../../CartContext';
 
 function Products(props) {
 	const [products, setProduct] = useState([]);
+	const [cart, setCart] = useContext(CartContext);
+	const [qty, setQty] = useState(1);
 
 	useEffect(() => {
 		const fetchData = async () => {
@@ -14,6 +17,12 @@ function Products(props) {
 		fetchData();
 		//return () => {};
 	}, []);
+
+	const  addToCart =  (product) => {
+		const cartItem = {name: product.name, image: product.image, price: product.price, qty: qty}
+		setCart( cart => [...cart, cartItem]);
+	   //props.history.push("/cart/" + props.match.params.id + "?qty=" + qty )
+		 };
 
 	return (
 		<>
@@ -38,7 +47,10 @@ function Products(props) {
 										</Card.Title>
 										<Card.Text>${product.price}</Card.Text>
 										<Card.Text className="text-small"><Link to={`/product/${product.category}`}>{product.category}</Link></Card.Text>
-										<Button variant="outline-primary">Buy </Button>
+										{ product.countInStock > 0 && (
+										<Card.Text><Button variant="outline-primary"  onClick={() => addToCart(product)}>Add to Cart </Button></Card.Text> )}
+										{ product.countInStock > 0 && (
+										<Button variant="outline-primary">Buy Now </Button> )}
 									</Card.Body>
 								</Card>
 							</div>
