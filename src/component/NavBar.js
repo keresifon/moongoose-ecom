@@ -13,7 +13,7 @@ function NavBar(props) {
   
         <Navbar  className="bg-mongoose-ecom border-bottom border-secondary">
         {/* <Button className = "harmburger">&#9776;</Button> */}
-    <Navbar.Brand className ="display-4">NoWahala</Navbar.Brand>
+    <Navbar.Brand className ="display-1">Okpogho</Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">
       <div className="container">

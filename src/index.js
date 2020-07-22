@@ -6,7 +6,7 @@ import * as serviceWorker from './serviceWorker';
 import {  BrowserRouter } from 'react-router-dom'
 import { CartContext} from './CartContext'
 
-console.log("URL",process.env.REACT_APP_API_URL);
+
 ReactDOM.render(
   
   
