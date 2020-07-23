@@ -3,6 +3,7 @@ import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import http from '../../services/httpService';
 import {CartContext}  from '../../CartContext';
+import { ShoppingBasket } from '../../services/cartService';
 
 function Products(props) {
 	const [products, setProduct] = useState([]);
@@ -18,12 +19,9 @@ function Products(props) {
 		//return () => {};
 	}, []);
 
-	const  addToCart =  (product) => {
-		const cartItem = {_id: product._id, name: product.name, image: product.image, price: product.price, qty: qty}
-		
-		setCart( cart => [...cart, cartItem]);
-	   
-		 };
+	
+	
+	const  addToCart =  ShoppingBasket (cart, qty, setCart);
 
 	return (
 		<>
@@ -64,3 +62,6 @@ function Products(props) {
 }
 
 export default Products;
+
+
+

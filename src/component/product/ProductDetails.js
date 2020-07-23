@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import {CartContext}  from '../../CartContext';
 
 import http from '../../services/httpService';
+import { ShoppingCart } from '../../services/cartService';
 
 
 
@@ -35,16 +36,7 @@ function ProductDetails(props) {
 		//return () => {};
 	}, [props.match.params.id]);
 
-   const  addToCart =  () => {
-   //let currCart = [...cart]
-   
-   const cartItem = {_id: products._id, name: products.name, image: products.image, price: products.price, qty: qty}
-   
-   //let itemExists = currCart.find()
-
-   setCart( cart => [...cart, cartItem]);
-  //props.history.push("/cart/" + props.match.params.id + "?qty=" + qty )
-	};
+   const  addToCart =  ShoppingCart(cart, products, qty, setCart);
 
 	const catproduct = catProducts.filter(
 		(cat) => cat.category === products.category && cat._id !== props.match.params.id
@@ -142,3 +134,6 @@ function ProductDetails(props) {
 }
 
 export default ProductDetails;
+
+
+

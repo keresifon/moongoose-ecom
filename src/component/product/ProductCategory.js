@@ -3,6 +3,7 @@ import {  Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import http from '../../services/httpService'
 import {CartContext}  from '../../CartContext';
+import {ShoppingBasket} from '../../services/cartService'
 
 function ProductCategory({match}) {
 
@@ -21,14 +22,7 @@ function ProductCategory({match}) {
         //return () => {};
     }, []);
    
-	const  addToCart =  (product) => {
-		const items = {_id: product._id, name: product.name, image: product.image, price: product.price, qty: qty}
-   const cartItem = items.filter((item, index) => {
-    return items.indexOf(item) === index;
-});
-		setCart( cart => [...cart, cartItem]);
-	   
-		 };
+    const  addToCart =  ShoppingBasket (cart, qty, setCart);
 
   
     const catproduct = products.filter((cat) => cat.category ===  match.params.category);

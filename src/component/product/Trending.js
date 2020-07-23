@@ -3,6 +3,7 @@ import { Card , Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import http from '../../services/httpService'
 import { CartContext } from '../../CartContext';
+import { ShoppingBasket} from '../../services/cartService'
 
 
 
@@ -22,11 +23,7 @@ function Trending(props) {
 		//return () => {};
   }, []);
 
-  const  addToCart =  (product) => {
-		const cartItem = {name: product.name, image: product.image, price: product.price, qty: qty}
-		setCart( cart => [...cart, cartItem]);
-	   
-		 };
+  const  addToCart =  ShoppingBasket (cart, qty, setCart);
   
 
   const trending = products.filter(p => p.trending === true)
