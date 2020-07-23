@@ -19,9 +19,10 @@ function Products(props) {
 	}, []);
 
 	const  addToCart =  (product) => {
-		const cartItem = {name: product.name, image: product.image, price: product.price, qty: qty}
+		const cartItem = {_id: product._id, name: product.name, image: product.image, price: product.price, qty: qty}
+		
 		setCart( cart => [...cart, cartItem]);
-	   //props.history.push("/cart/" + props.match.params.id + "?qty=" + qty )
+	   
 		 };
 
 	return (

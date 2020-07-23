@@ -36,7 +36,12 @@ function ProductDetails(props) {
 	}, [props.match.params.id]);
 
    const  addToCart =  () => {
-   const cartItem = {name: products.name, image: products.image, price: products.price, qty: qty}
+   //let currCart = [...cart]
+   
+   const cartItem = {_id: products._id, name: products.name, image: products.image, price: products.price, qty: qty}
+   
+   //let itemExists = currCart.find()
+
    setCart( cart => [...cart, cartItem]);
   //props.history.push("/cart/" + props.match.params.id + "?qty=" + qty )
 	};

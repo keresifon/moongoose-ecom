@@ -1,11 +1,14 @@
-import React, {useEffect , useState } from 'react';
+import React, {useEffect , useState, useContext } from 'react';
 import {  Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import http from '../../services/httpService'
+import {CartContext}  from '../../CartContext';
 
 function ProductCategory({match}) {
 
  const [products, setProduct] = useState([]);
+ const [cart, setCart] = useContext(CartContext);
+ const [qty, setQty] = useState(1);
 	
 
     useEffect(() => {
@@ -18,7 +21,14 @@ function ProductCategory({match}) {
         //return () => {};
     }, []);
    
-
+	const  addToCart =  (product) => {
+		const items = {_id: product._id, name: product.name, image: product.image, price: product.price, qty: qty}
+   const cartItem = items.filter((item, index) => {
+    return items.indexOf(item) === index;
+});
+		setCart( cart => [...cart, cartItem]);
+	   
+		 };
 
   
     const catproduct = products.filter((cat) => cat.category ===  match.params.category);
@@ -45,7 +55,9 @@ function ProductCategory({match}) {
 								</Card.Title>
 								<Card.Text>${product.price}</Card.Text>
 								<Card.Text className="text-small">{product.category}</Card.Text>
-								<Button variant="outline-primary">Buy </Button>
+                                { product.countInStock > 0 && (
+								<Button variant="outline-primary" onClick={() => addToCart(product)}>Add To Cart </Button>
+                                )}
 							</Card.Body>
 						</Card>
 					</div>
