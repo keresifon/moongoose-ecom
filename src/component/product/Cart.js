@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react';
 import { CartContext } from '../../CartContext';
 import { Container, Col, Row, Image, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import _ from 'lodash';
 
 function Cart() {
 	const [cart, setCart] = useContext(CartContext);
@@ -12,16 +13,13 @@ function Cart() {
 	const removeFromCart = (item) => {
 		const ncart = cart.filter((cartItem) => cartItem._id !== item._id);
 		setCart(ncart);
-
 	};
 
 	const updateCart = (item, e) => {
-		const ncart = cart.filter((cartItem) => cartItem._id !== item._id);
-		const cartItem = { _id: item._id, name: item.name, image: item.image, price: item.price , qty: e };
-		setCart(cart => [...ncart, cartItem]);
-		
+		 _.chain(cart).find({ _id: item._id }).merge({ qty: e }).head().value();
 
-	}
+		setCart((cart) => [...cart]);
+	};
 
 	return (
 		<>
@@ -63,11 +61,11 @@ function Cart() {
 													<option>9</option>
 													<option>10</option>
 												</select>
-												
 											</div>{' '}
-											
 										</Col>
-										<Col><Button onClick={() => removeFromCart(item)}>Delete</Button></Col>
+										<Col>
+											<Button onClick={() => removeFromCart(item)}>Delete</Button>
+										</Col>
 										<Col className="d-flex justify-content-end">${item.price * item.qty}</Col>
 									</Row>
 								))}
