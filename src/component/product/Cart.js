@@ -12,7 +12,16 @@ function Cart() {
 	const removeFromCart = (item) => {
 		const ncart = cart.filter((cartItem) => cartItem._id !== item._id);
 		setCart(ncart);
+
 	};
+
+	const updateCart = (item, e) => {
+		const ncart = cart.filter((cartItem) => cartItem._id !== item._id);
+		const cartItem = { _id: item._id, name: item.name, image: item.image, price: item.price , qty: e };
+		setCart(cart => [...ncart, cartItem]);
+		
+
+	}
 
 	return (
 		<>
@@ -41,19 +50,24 @@ function Cart() {
 												<select
 													className=" custom-select-sm"
 													value={item.qty}
-													onChange={(e) => {
-														setQty(e.target.value);
-													}}
+													onChange={(e) => updateCart(item, e.target.value)}
 												>
 													<option>1</option>
 													<option>2</option>
 													<option>3</option>
 													<option>4</option>
+													<option>5</option>
+													<option>6</option>
+													<option>7</option>
+													<option>8</option>
+													<option>9</option>
+													<option>10</option>
 												</select>
-												{item.qty}
+												
 											</div>{' '}
-											<Button onClick={() => removeFromCart(item)}>Delete</Button>
+											
 										</Col>
+										<Col><Button onClick={() => removeFromCart(item)}>Delete</Button></Col>
 										<Col className="d-flex justify-content-end">${item.price * item.qty}</Col>
 									</Row>
 								))}
