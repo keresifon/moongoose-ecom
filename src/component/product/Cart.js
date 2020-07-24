@@ -36,17 +36,17 @@ function Cart() {
 							<Container fluid>
 								{cart.map((item) => (
 									<Row className="p-3 border-bottom" key={item._id}>
-										<Col sm={3}>
+										<Col sm={2}>
 											<Image src={item.image} alt="" className="img-fluid ml-6 " />
 										</Col>
-										<Col>
+										<Col sm={2}>
 											<div>
 												<Link to={`/products/${item._id}`}>{item.name}</Link>
 											</div>
-											<div>
-												Qty:
+											<div className="p-3">
+												Qty :
 												<select
-													className=" custom-select-sm"
+													className=" custom-select-sm input-group-sm"
 													value={item.qty}
 													onChange={(e) => updateCart(item, e.target.value)}
 												>
@@ -62,9 +62,10 @@ function Cart() {
 													<option>10</option>
 												</select>
 											</div>{' '}
+											<Button variant="outline-primary "  size="sm" onClick={() => removeFromCart(item)}>Delete</Button>
 										</Col>
-										<Col>
-											<Button onClick={() => removeFromCart(item)}>Delete</Button>
+										<Col sm={2}>
+											
 										</Col>
 										<Col className="d-flex justify-content-end">${item.price * item.qty}</Col>
 									</Row>

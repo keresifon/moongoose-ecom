@@ -21,8 +21,10 @@ function ProductCategory({match}) {
         fetchCatData();
         //return () => {};
     }, []);
-   
+    
     const  addToCart =  ShoppingBasket (cart, qty, setCart);
+
+   
 
   
     const catproduct = products.filter((cat) => cat.category ===  match.params.category);
