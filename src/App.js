@@ -9,6 +9,9 @@ import Footer from './component/Footer';
 import ProductCategory from './component/product/ProductCategory';
 import Cart from './component/product/Cart';
 import { CartProvider } from './CartContext';
+import LoginForm from './component/LoginForm';
+import Logout from './component/Logout';
+import Register from './component/Register';
 
 function App() {
 	const [cart, setCart] = useState([]);
@@ -22,6 +25,9 @@ function App() {
 						<Route path="/product/:category" component={ProductCategory} />
 						<Route path="/products" component={Products} />
 						<Route path="/cart/:id?" component={Cart} />
+						<Route path="/login" component={LoginForm} />
+						<Route path="/logout" component={Logout} />
+						<Route path="/register" component={Register} />
 
 						<Route path="/" component={Home} />
 					</Switch>

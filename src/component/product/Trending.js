@@ -12,7 +12,7 @@ function Trending(props) {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const { data } = await http.get('/api/products');
+			const { data } = await http.get('/products');
 			setProduct(data);
 		};
 		fetchData();

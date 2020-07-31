@@ -26,6 +26,9 @@ function NavBar(props) {
        
       </Nav>
       <Nav className="ml-auto ">
+      <Nav.Link as={Link} to="/register">SignUp</Nav.Link>
+      <Nav.Link as={Link} to="/login">Login</Nav.Link>
+      <Nav.Link as={Link} to="/logout">Logout</Nav.Link>
       <Nav.Link as={Link} to="/cart"><FaShoppingCart className="h4" />{cart.length}</Nav.Link>
         </Nav>
       </div>
