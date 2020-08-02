@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { Container, Col, Row, Image, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import {CartContext}  from '../../CartContext';
+import {CartContext}  from '../../context/Context';
 
 import http from '../../services/httpService';
 import { ShoppingCart } from '../../services/cartService';

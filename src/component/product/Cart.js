@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { CartContext } from '../../CartContext';
+import { CartContext } from '../../context/Context';
 import { Container, Col, Row, Image, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';

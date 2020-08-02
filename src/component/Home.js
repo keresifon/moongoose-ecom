@@ -6,6 +6,7 @@ import {Link} from 'react-router-dom'
 import Trending from './product/Trending';
 
 function Home(props) {
+	
 	return (
        <div>
         <div className="pb-100">

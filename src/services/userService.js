@@ -1,4 +1,4 @@
-//import {apiUrl} from '../config.json'
+
 import http from './httpService';
 
 const apiEndpoint = `/users`;

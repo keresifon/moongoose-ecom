@@ -2,7 +2,7 @@ import React, {useEffect , useState, useContext } from 'react';
 import {  Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import http from '../../services/httpService'
-import {CartContext}  from '../../CartContext';
+import {CartContext}  from '../../context/Context';
 import {ShoppingBasket} from '../../services/cartService'
 
 function ProductCategory({match}) {
