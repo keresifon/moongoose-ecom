@@ -36,7 +36,7 @@ function ProductDetails(props) {
 		//return () => {};
 	}, [props.match.params.id]);
 
-   console.log(products)
+   
    const  addToCart =  ShoppingCart(cart, products, qty, setCart);
 
 	const catproduct = catProducts.filter(
@@ -44,8 +44,8 @@ function ProductDetails(props) {
 	);
 
 	return (
-		<>
-		<div></div>
+		
+		
 		<Container fluid className="pt-3">
 			<Row className="pb-3">
 				<Col sm={4}>
@@ -130,7 +130,7 @@ function ProductDetails(props) {
 				))}
 			</Row>
 		</Container>
-		</>
+		
 	);
 }
 

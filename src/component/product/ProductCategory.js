@@ -9,7 +9,7 @@ function ProductCategory({match}) {
 
  const [products, setProduct] = useState([]);
  const [cart, setCart] = useContext(CartContext);
- const [qty, setQty] = useState(1);
+ const [qty] = useState(1);
 	
 
     useEffect(() => {

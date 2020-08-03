@@ -6,7 +6,7 @@ import { FaShoppingCart } from 'react-icons/fa';
 import { CartContext , UserContext } from '../context/Context';
 
 function NavBar(props) {
-	const [cart, setCart] = useContext(CartContext);
+	const [cart] = useContext(CartContext);
 const user = useContext(UserContext);
 	//console.log(user);
 	return (
