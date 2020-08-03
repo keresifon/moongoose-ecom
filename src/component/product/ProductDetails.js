@@ -16,7 +16,7 @@ function ProductDetails(props) {
 
 	useEffect(() => {
 		const fetchData = async () => {
-			const { data } = await http.get('/api/products');
+			const { data } = await http.get('/products');
 			const productId = props.match.params.id;
 			const product = data.find((p) => p._id === productId);
 
@@ -28,7 +28,7 @@ function ProductDetails(props) {
 
 	useEffect(() => {
 		const fetchCatData = async () => {
-			const { data } = await http.get('/api/products');
+			const { data } = await http.get('/products');
 
 			setCatProduct(data);
 		};
@@ -36,6 +36,7 @@ function ProductDetails(props) {
 		//return () => {};
 	}, [props.match.params.id]);
 
+   console.log(products)
    const  addToCart =  ShoppingCart(cart, products, qty, setCart);
 
 	const catproduct = catProducts.filter(

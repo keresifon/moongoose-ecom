@@ -14,7 +14,7 @@ function ProductCategory({match}) {
 
     useEffect(() => {
         const fetchCatData = async () => {
-        const { data } = await http.get('/api/products');
+        const { data } = await http.get('/products');
         
             setProduct(data);
         };

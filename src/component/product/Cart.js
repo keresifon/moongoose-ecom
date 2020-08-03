@@ -70,6 +70,7 @@ function Cart() {
 										<Col className="d-flex justify-content-end">${item.price * item.qty}</Col>
 									</Row>
 								))}
+								
 							</Container>
 						)}
 					</div>
@@ -81,6 +82,7 @@ function Cart() {
 					Total : ${totalPrice}{' '}
 				</div>
 			)}
+			
 		</>
 	);
 }
