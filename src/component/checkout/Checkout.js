@@ -4,7 +4,7 @@ import { Container, Col, Row, Image, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
 
-function Cart() {
+function Checkout() {
 	const [cart, setCart] = useContext(CartContext);
 	//const [order, setOrder] = useContext(OrderContext);
 	const user = useContext(UserContext);
@@ -38,7 +38,7 @@ function Cart() {
 					<Col sm={8}>
 						<div className="container">
 							<div className="row border-bottom ">
-								<div className="h4 font-weight-bold     pt-5 col-md-4 mr-2  ">Shopping Cart</div>
+								<div className="h4 font-weight-bold     pt-5 col-md-4 mr-2  ">CheckOut</div>
 								<div className=" col-md-4  pt-5 ml-auto  d-flex pb-4  justify-content-end"> Price</div>
 							</div>
 							<div className="container-fluid">
@@ -112,8 +112,8 @@ function Cart() {
 										</Card.Text>
 
 										<Card.Text>
-											<Button variant="outline-primary btn-block" as={Link} to="/checkout"  >
-												Proceed to Checkout
+											<Button variant="outline-primary btn-block"   >
+												Pay
 											</Button>
 										</Card.Text>
 									</Card.Body>
@@ -127,4 +127,4 @@ function Cart() {
 	);
 }
 
-export default Cart;
+export default Checkout;
