@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import http from '../../services/httpService';
 import {CartContext}  from '../../context/Context';
 import { ShoppingBasket } from '../../services/cartService';
+import _ from 'lodash';
 
 function Products(props) {
 	const [products, setProduct] = useState([]);
@@ -20,6 +21,7 @@ function Products(props) {
 	}, []);
 
 	
+	const sortedProducts = _.orderBy(products, ['date'], ['desc'])
 	
 	const  addToCart =  ShoppingBasket (cart, qty, setCart);
 
@@ -34,7 +36,7 @@ function Products(props) {
 			</div>
 				<div className="container md-5 pt-3">
 					<div className="row">
-						{products.map((product) => (
+						{sortedProducts.map((product) => (
 							<div className="col-sm-3" key={product._id}>
 								<Card className="border-faded-warning">
 									<Link to={`/products/${product._id}`}>

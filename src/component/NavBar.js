@@ -14,6 +14,9 @@ const user = useContext(UserContext);
 			<Navbar bg="dark" variant="dark">
 				<Navbar.Text className="mr-auto container">Available 24/7</Navbar.Text>
 				<Nav className="ml-auto ">
+				{user && user.isAdmin && (<Nav.Link as={Link} to="/addproduct">
+								Add Prod
+							</Nav.Link> )}
         {!user && (
 							<Nav.Link as={Link} to="/register">
 								Sign Up

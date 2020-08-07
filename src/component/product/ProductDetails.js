@@ -2,7 +2,7 @@ import React, { useEffect, useState, useContext } from 'react';
 import { Container, Col, Row, Image, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import {CartContext}  from '../../context/Context';
-
+import _ from 'lodash';
 import http from '../../services/httpService';
 import { ShoppingCart } from '../../services/cartService';
 
@@ -42,6 +42,8 @@ function ProductDetails(props) {
 	const catproduct = catProducts.filter(
 		(cat) => cat.category === products.category && cat._id !== props.match.params.id
 	);
+
+	const sortedCat = _.orderBy(catproduct, ['date'], ['desc'])
 
 	return (
 		
@@ -111,7 +113,7 @@ function ProductDetails(props) {
 				<Col></Col>
 			</Row>
 			<Row>
-				{catproduct.map((product) => (
+				{sortedCat.map((product) => (
 					<div className="col-sm-2" key={product._id}>
 						<Card className="border-faded-warning">
 							<Link to={`/products/${product._id}`}>

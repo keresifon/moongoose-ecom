@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { CartContext, UserContext, OrderContext } from '../../context/Context';
+import { CartContext } from '../../context/Context';
 import { Container, Col, Row, Image, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
@@ -7,7 +7,7 @@ import _ from 'lodash';
 function Cart() {
 	const [cart, setCart] = useContext(CartContext);
 	//const [order, setOrder] = useContext(OrderContext);
-	const user = useContext(UserContext);
+	//const user = useContext(UserContext);
 
 	const totalPrice = cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
 
@@ -22,13 +22,7 @@ function Cart() {
 		setCart((cart) => [...cart]);
 	};
 
-	// const checkOut = (order) => {
-	// 	const orders = [...cart];
-	// 	const itemsOrdered = orders.map((order) => ({ name: order.name, price: order.price, image:order.image, qty: order.qty }));
-	// 	const orderId = _.uniqueId('oid_');
-	// 	const ordered = _.concat(orderId, itemsOrdered, totalPrice, user.email);
-	// 	setOrder(ordered);
-	// };
+	
 
 	return (
 		<>

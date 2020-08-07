@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import http from '../../services/httpService';
 import { CartContext } from '../../context/Context';
 import { ShoppingBasket } from '../../services/cartService';
+import _ from 'lodash';
 
 function Trending(props) {
 	const [products, setProduct] = useState([]);
@@ -23,12 +24,14 @@ function Trending(props) {
 
 	const trending = products.filter((p) => p.trending === true);
 
+	const sortedTrend = _.orderBy(trending, ['date'], ['desc'])
+
 	return (
 		<>
 			<div>
 				<div className="container md-5 ">
 					<div className="row">
-						{trending.map((product) => (
+						{sortedTrend.map((product) => (
 							<div className="col-sm-3" key={product._id}>
 								<Card className="border-faded-warning rounded-lg">
 									<Link to={`/products/${product._id}`}>

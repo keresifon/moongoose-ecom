@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import http from '../../services/httpService'
 import {CartContext}  from '../../context/Context';
 import {ShoppingBasket} from '../../services/cartService'
+import _ from 'lodash';
 
 function ProductCategory({match}) {
 
@@ -28,6 +29,8 @@ function ProductCategory({match}) {
 
   
     const catproduct = products.filter((cat) => cat.category ===  match.params.category);
+
+    const sortedCat = _.orderBy(catproduct, ['date'], ['desc'])
   
     return (
         <div>
@@ -39,7 +42,7 @@ function ProductCategory({match}) {
 			</div>
         <div className="container md-5 pt-3" >
              <div className="row">
-             {catproduct.map((product) => (
+             {sortedCat.map((product) => (
 					<div className="col-sm-3" key={product._id}>
 						<Card className="border-faded-warning">
 							<Link to={`/products/${product._id}`}>

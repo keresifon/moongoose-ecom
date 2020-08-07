@@ -1,34 +1,29 @@
-import React, { useContext } from 'react';
-import { CartContext, UserContext, OrderContext } from '../../context/Context';
+import React, { useContext, useState } from 'react';
+import { CartContext, UserContext} from '../../context/Context';
 import { Container, Col, Row, Image, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
+import { saveOrder } from '../../services/orderService';
 
-function Checkout() {
-	const [cart, setCart] = useContext(CartContext);
-	//const [order, setOrder] = useContext(OrderContext);
+function Checkout(props) {
+	const [cart] = useContext(CartContext);
+	const [order] = useState({itemsOrdered : '' , user: '', totalPrice: ''});
 	const user = useContext(UserContext);
 
 	const totalPrice = cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
 
-	const removeFromCart = (item) => {
-		const ncart = cart.filter((cartItem) => cartItem._id !== item._id);
-		setCart(ncart);
-	};
+	
 
-	const updateCart = (item, e) => {
-		_.chain(cart).find({ _id: item._id }).merge({ qty: e }).head().value();
-
-		setCart((cart) => [...cart]);
-	};
-
-	// const checkOut = (order) => {
-	// 	const orders = [...cart];
-	// 	const itemsOrdered = orders.map((order) => ({ name: order.name, price: order.price, image:order.image, qty: order.qty }));
-	// 	const orderId = _.uniqueId('oid_');
-	// 	const ordered = _.concat(orderId, itemsOrdered, totalPrice, user.email);
-	// 	setOrder(ordered);
-	// };
+	 const checkOut =  async (order) => {
+		const orders = [...cart];
+		 const itemsOrdered = orders.map((order) => ({ name: order.name, price: order.price, image:order.image, qty: order.qty }));
+		 //You are passing an objec to the database so using merge rather than concat 
+		 const ordered = _.merge({itemsOrdered : itemsOrdered}, {totalPrice: totalPrice,user: user.email })
+		await saveOrder(ordered);
+		
+		 
+	
+	 };
 
 	return (
 		<>
@@ -57,31 +52,10 @@ function Checkout() {
 															<Link to={`/products/${item._id}`}>{item.name}</Link>
 														</div>
 														<div className="p-3">
-															Qty :
-															<select
-																className="custom-select-sm input-group-sm"
-																value={item.qty}
-																onChange={(e) => updateCart(item, e.target.value)}
-															>
-																<option>1</option>
-																<option>2</option>
-																<option>3</option>
-																<option>4</option>
-																<option>5</option>
-																<option>6</option>
-																<option>7</option>
-																<option>8</option>
-																<option>9</option>
-																<option>10</option>
-															</select>
+															Qty : {item.qty}
+															
 														</div>{' '}
-														<Button
-															variant="outline-primary "
-															size="sm"
-															onClick={() => removeFromCart(item)}
-														>
-															Delete
-														</Button>
+														
 													</Col>
 													<Col sm={2}></Col>
 													<Col className="d-flex justify-content-end">
@@ -112,7 +86,7 @@ function Checkout() {
 										</Card.Text>
 
 										<Card.Text>
-											<Button variant="outline-primary btn-block"   >
+											<Button variant="outline-primary btn-block" onClick={() => checkOut(order)}  >
 												Pay
 											</Button>
 										</Card.Text>
