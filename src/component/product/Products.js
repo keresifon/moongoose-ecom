@@ -46,7 +46,7 @@ function Products(props) {
 										<Card.Title>
 											<Link to={`/products/${product._id}`}>{product.name}</Link>
 										</Card.Title>
-										<Card.Text>${product.price}</Card.Text>
+										<Card.Text>₦{product.price}</Card.Text>
 										<Card.Text className="text-small"><Link to={`/product/${product.category}`}>{product.category}</Link></Card.Text>
 										{ product.countInStock > 0 && (
 										<Card.Text><Button variant="outline-primary"  onClick={() => addToCart(product)}>Add to Cart </Button></Card.Text> )}

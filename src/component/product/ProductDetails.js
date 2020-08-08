@@ -56,7 +56,7 @@ function ProductDetails(props) {
 				</Col>
 				<Col sm={4}>
 					<div className="h4  py-3">{products.name}</div>
-					<div className="font-weight-bold  border-bottom text-danger">${products.price}</div>
+					<div className="font-weight-bold  border-bottom text-danger">₦{products.price}</div>
 					<div className="py-1">Brand : {products.brand}</div>
 					<div className="py-3 text-small">{products.category}</div>
 					<div className="">Description</div>
@@ -102,7 +102,7 @@ function ProductDetails(props) {
 							</Card.Text>
 							<Card.Text>
 								{products.countInStock > 0 && (
-									<Button variant="outline-primary btn-block">Buy Now</Button>
+									<Button variant="outline-primary btn-block" onClick={addToCart} as={Link} to="/cart" >Buy Now</Button>
 								)}
 							</Card.Text>
 						</Card.Body>

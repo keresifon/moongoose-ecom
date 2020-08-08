@@ -1,15 +1,19 @@
 import React, { useContext } from 'react';
-import { CartContext } from '../../context/Context';
+import { CartContext, UserContext, OrderContext } from '../../context/Context';
 import { Container, Col, Row, Image, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import _ from 'lodash';
+import { saveOrder } from '../../services/orderService';
+import { v1 as uuidv1 } from 'uuid';
 
 function Cart() {
 	const [cart, setCart] = useContext(CartContext);
-	//const [order, setOrder] = useContext(OrderContext);
-	//const user = useContext(UserContext);
+	const [order, setOrder] = useContext(OrderContext);
+	//const [order] = useState({ itemsOrdered: '', user: '', totalPrice: '' });
+	const user = useContext(UserContext);
 
 	const totalPrice = cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
+	const totalQuantity = cart.reduce((acc, curr) => acc + curr.qty * 1, 0);
 
 	const removeFromCart = (item) => {
 		const ncart = cart.filter((cartItem) => cartItem._id !== item._id);
@@ -22,7 +26,21 @@ function Cart() {
 		setCart((cart) => [...cart]);
 	};
 
-	
+	const checkOut = async (order) => {
+		const orders = [...cart];
+		const itemsOrdered = orders.map((order) => ({
+			name: order.name,
+			price: order.price,
+			image: order.image,
+			qty: order.qty,
+		}));
+		//You are passing an object to the database so using merge rather than concat produces better results
+		const transaction_ref = uuidv1();
+		
+		const ordered = _.merge({ itemsOrdered: itemsOrdered }, { transaction_ref : transaction_ref, totalPrice: totalPrice, user: user.email });
+		setOrder(ordered);
+		await saveOrder(ordered);
+	};
 
 	return (
 		<>
@@ -79,7 +97,7 @@ function Cart() {
 													</Col>
 													<Col sm={2}></Col>
 													<Col className="d-flex justify-content-end">
-														${item.price * item.qty}
+														₦{item.price * item.qty}
 													</Col>
 												</Row>
 											))}
@@ -102,11 +120,16 @@ function Cart() {
 										</Card.Text>
 
 										<Card.Text className="py-1">
-											Subtotal ({cart.length} items) : ${totalPrice}{' '}
+											Subtotal ({totalQuantity} items) : ₦{totalPrice}{' '}
 										</Card.Text>
 
 										<Card.Text>
-											<Button variant="outline-primary btn-block" as={Link} to="/checkout"  >
+											<Button
+												variant="outline-primary btn-block"
+												as={Link}
+												to="/checkout"
+												onClick={() => checkOut(order)}
+											>
 												Proceed to Checkout
 											</Button>
 										</Card.Text>

@@ -1,13 +1,12 @@
 import React, { useState } from 'react';
 import Joi from 'joi-browser';
 import Form from '../common/Form';
-import {  Redirect } from 'react-router-dom';
 import { saveProduct} from '../../services/prodService'
 import { Container, Row, Col } from 'react-bootstrap';
 
 function AddProduct(props) {
 	const [data, setData] = useState({ name: '', price: '', brand: '', description: '', image: '', category: '', trending: '', countInStock: '', tags: '' });
-	const [errors, setErrors] = useState({});
+	//const [errors, setErrors] = useState({});
 
 	const schema = {
 		name: Joi.string().required().label('Name'),
@@ -24,7 +23,7 @@ function AddProduct(props) {
  
     const doSubmit = async (event) => {
 		event.preventDefault();
-		const errors = validate();
+	//	const errors = validate();
 	 await saveProduct(data);
    
 
@@ -33,7 +32,7 @@ function AddProduct(props) {
 		
 	};
 
-	const { renderButton, renderInput, validate} = Form(data, schema, props, setData);
+	const { renderButton, renderInput} = Form(data, schema, props, setData);
    
 	return (
         <Container>

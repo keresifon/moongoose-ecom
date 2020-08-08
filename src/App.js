@@ -9,7 +9,7 @@ import Home from './component/Home';
 import Footer from './component/Footer';
 import ProductCategory from './component/product/ProductCategory';
 import Cart from './component/product/Cart';
-import { CartProvider, UserProvider  } from './context/Context';
+import { CartProvider, UserProvider, OrderProvider  } from './context/Context';
 import LoginForm from './component/LoginForm';
 import Logout from './component/Logout';
 import Register from './component/Register';
@@ -20,7 +20,7 @@ import AddProduct from './component/product/AddProduct';
 function App(props) {
 	const [cart, setCart] = useState([]);
 	const [user, setUser] = useState({});
-	//const [order, setOrder] = useState({ itemsOrdered: '', user: '', totalPrice: 0 });
+	const [order, setOrder] = useState({});
 
 	useEffect(() => {
 		const user = auth.getCurrentUser();
@@ -30,7 +30,7 @@ function App(props) {
 	return (
 		<>
 			<CartProvider value={[cart, setCart]}>
-				
+			 <OrderProvider value = {[order, setOrder]}	>
 					<UserProvider value={user}>
 						<NavBar />
 						<div className="pb-100">
@@ -52,7 +52,7 @@ function App(props) {
 
 						<Footer />
 					</UserProvider>
-				
+					</OrderProvider>
 			</CartProvider>
 		</>
 	);

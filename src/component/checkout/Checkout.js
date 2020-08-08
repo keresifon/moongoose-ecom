@@ -1,29 +1,34 @@
-import React, { useContext, useState } from 'react';
-import { CartContext, UserContext} from '../../context/Context';
-import { Container, Col, Row, Image, Button, Card } from 'react-bootstrap';
+import React, { useContext } from 'react';
+import { CartContext, UserContext, OrderContext } from '../../context/Context';
+import { Container, Col, Row, Image,  Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import _ from 'lodash';
-import { saveOrder } from '../../services/orderService';
+import { PaystackButton } from 'react-paystack';
+
+
 
 function Checkout(props) {
 	const [cart] = useContext(CartContext);
-	const [order] = useState({itemsOrdered : '' , user: '', totalPrice: ''});
+	const [order] = useContext(OrderContext);
 	const user = useContext(UserContext);
 
 	const totalPrice = cart.reduce((acc, curr) => acc + curr.price * curr.qty, 0);
+	const totalQuantity = cart.reduce((acc, curr) => acc + curr.qty * 1, 0);
+	const customer = user.email;
+	const reference = order.transaction_ref;
+	const config = {
+		reference: reference,
+		email: customer,
+		amount: totalPrice * 100,
+		publicKey: process.env.REACT_APP_API_PAYSTACK,
+	};
 
-	
-
-	 const checkOut =  async (order) => {
-		const orders = [...cart];
-		 const itemsOrdered = orders.map((order) => ({ name: order.name, price: order.price, image:order.image, qty: order.qty }));
-		 //You are passing an objec to the database so using merge rather than concat 
-		 const ordered = _.merge({itemsOrdered : itemsOrdered}, {totalPrice: totalPrice,user: user.email })
-		await saveOrder(ordered);
-		
-		 
-	
-	 };
+	const componentProps = {
+		...config,
+		text: 'Pay',
+		onSuccess: () => null,
+		onClose: () => null,
+		className: 'btn btn-outline-primary btn-block',
+	};
 
 	return (
 		<>
@@ -51,15 +56,11 @@ function Checkout(props) {
 														<div>
 															<Link to={`/products/${item._id}`}>{item.name}</Link>
 														</div>
-														<div className="p-3">
-															Qty : {item.qty}
-															
-														</div>{' '}
-														
+														<div className="p-3">Qty : {item.qty}</div>{' '}
 													</Col>
 													<Col sm={2}></Col>
 													<Col className="d-flex justify-content-end">
-														${item.price * item.qty}
+														₦{item.price * item.qty}
 													</Col>
 												</Row>
 											))}
@@ -82,13 +83,11 @@ function Checkout(props) {
 										</Card.Text>
 
 										<Card.Text className="py-1">
-											Subtotal ({cart.length} items) : ${totalPrice}{' '}
+											Subtotal ({totalQuantity} items) : ₦{totalPrice}{' '}
 										</Card.Text>
 
 										<Card.Text>
-											<Button variant="outline-primary btn-block" onClick={() => checkOut(order)}  >
-												Pay
-											</Button>
+											<PaystackButton className="outline-primary btn-block" {...componentProps} />
 										</Card.Text>
 									</Card.Body>
 								</Card>
