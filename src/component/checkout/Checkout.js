@@ -1,13 +1,13 @@
 import React, { useContext } from 'react';
 import { CartContext, UserContext, OrderContext } from '../../context/Context';
-import { Container, Col, Row, Image,  Card } from 'react-bootstrap';
+import { Container, Col, Row, Image, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { PaystackButton } from 'react-paystack';
 
-
+import PayStack from '../../services/payStackService';
 
 function Checkout(props) {
-	const [cart] = useContext(CartContext);
+	const [cart, setCart] = useContext(CartContext);
 	const [order] = useContext(OrderContext);
 	const user = useContext(UserContext);
 
@@ -15,20 +15,7 @@ function Checkout(props) {
 	const totalQuantity = cart.reduce((acc, curr) => acc + curr.qty * 1, 0);
 	const customer = user.email;
 	const reference = order.transaction_ref;
-	const config = {
-		reference: reference,
-		email: customer,
-		amount: totalPrice * 100,
-		publicKey: process.env.REACT_APP_API_PAYSTACK,
-	};
-
-	const componentProps = {
-		...config,
-		text: 'Pay',
-		onSuccess: () => null,
-		onClose: () => null,
-		className: 'btn btn-outline-primary btn-block',
-	};
+	const componentProps = PayStack(reference, customer, totalPrice, props, setCart);
 
 	return (
 		<>
@@ -101,3 +88,5 @@ function Checkout(props) {
 }
 
 export default Checkout;
+
+
