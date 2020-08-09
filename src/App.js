@@ -48,7 +48,7 @@ function App(props) {
 								<Route path="/checkout" component={Checkout} />
 								<Route path="/addproduct" component={AddProduct} />
 								<Route path="/thankyou" component={ThankYou} />
-								<Route path="/test" component={UpdateTest} />
+								{/* <Route path="/test" component={UpdateTest} /> */}
 
 								<Route path="/" component={Home} />
 							</Switch>

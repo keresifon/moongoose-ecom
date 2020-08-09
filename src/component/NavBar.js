@@ -34,9 +34,9 @@ const user = useContext(UserContext);
 							<Nav.Link as={Link} to="/logout">
 								Logout
 							</Nav.Link> )}
-							<Nav.Link as={Link} to="/test">
+							{/* <Nav.Link as={Link} to="/test">
 								Test
-							</Nav.Link>
+							</Nav.Link> */}
 				</Nav>
 			</Navbar>
 
