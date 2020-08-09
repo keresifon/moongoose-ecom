@@ -15,7 +15,9 @@ import Logout from './component/Logout';
 import Register from './component/Register';
 import Checkout from './component/checkout/Checkout';
 import AddProduct from './component/product/AddProduct';
+import UpdateTest from './component/product/UpdateTest';
 import ThankYou from './component/checkout/ThankYou';
+
 
 
 function App(props) {
@@ -46,6 +48,7 @@ function App(props) {
 								<Route path="/checkout" component={Checkout} />
 								<Route path="/addproduct" component={AddProduct} />
 								<Route path="/thankyou" component={ThankYou} />
+								<Route path="/test" component={UpdateTest} />
 
 								<Route path="/" component={Home} />
 							</Switch>
