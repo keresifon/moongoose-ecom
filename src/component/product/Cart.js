@@ -87,12 +87,8 @@ function Cart() {
 																<option>10</option>
 															</select>
 														</div>{' '}
-														{!user && (
-														<div>
-														You have to be logged in to check out!
-															</div>
-														)}
-														{user && (
+														
+														
 														<Button
 															variant="outline-primary "
 															size="sm"
@@ -100,7 +96,7 @@ function Cart() {
 														>
 															Delete
 														</Button>
-														)}
+													
 													</Col>
 													<Col sm={2}></Col>
 													<Col className="d-flex justify-content-end">
@@ -129,8 +125,13 @@ function Cart() {
 										<Card.Text className="py-1">
 											Subtotal ({totalQuantity} items) : ₦{totalPrice}{' '}
 										</Card.Text>
-
+                                        {!user && (
+														<div>
+														You have to be logged in to check out!
+															</div>
+														)}
 										<Card.Text>
+										{user && (
 											<Button
 												variant="outline-primary btn-block"
 												as={Link}
@@ -139,6 +140,7 @@ function Cart() {
 											>
 												Proceed to Checkout
 											</Button>
+										)}
 										</Card.Text>
 									</Card.Body>
 								</Card>
