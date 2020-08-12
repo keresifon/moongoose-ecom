@@ -87,6 +87,12 @@ function Cart() {
 																<option>10</option>
 															</select>
 														</div>{' '}
+														{!user && (
+														<div>
+														You have to be logged in to check out!
+															</div>
+														)}
+														{user && (
 														<Button
 															variant="outline-primary "
 															size="sm"
@@ -94,6 +100,7 @@ function Cart() {
 														>
 															Delete
 														</Button>
+														)}
 													</Col>
 													<Col sm={2}></Col>
 													<Col className="d-flex justify-content-end">
