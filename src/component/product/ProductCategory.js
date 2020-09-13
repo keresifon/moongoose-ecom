@@ -1,10 +1,10 @@
 import React, {useEffect , useState, useContext } from 'react';
 import {  Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import http from '../../services/httpService'
 import {CartContext}  from '../../context/Context';
 import {ShoppingBasket} from '../../services/cartService'
 import _ from 'lodash';
+import { getProducts } from '../../services/prodService';
 
 function ProductCategory({match}) {
 
@@ -12,23 +12,20 @@ function ProductCategory({match}) {
  const [cart, setCart] = useContext(CartContext);
  const [qty] = useState(1);
 	
-
-    useEffect(() => {
-        const fetchCatData = async () => {
-        const { data } = await http.get('/products');
-        
-            setProduct(data);
-        };
-        fetchCatData();
-        //return () => {};
-    }, []);
-    
+ useEffect(() => {
+    async function gProducts() {
+        const { data } = await getProducts();
+        const products = [...data];
+        setProduct(products);
+    }
+    gProducts();
+}, []);
     const  addToCart =  ShoppingBasket (cart, qty, setCart);
 
    
 
   
-    const catproduct = products.filter((cat) => cat.category ===  match.params.category);
+    const catproduct = products.filter((cat) => cat.category.name ===  match.params.category);
 
     const sortedCat = _.orderBy(catproduct, ['date'], ['desc'])
   
@@ -53,7 +50,7 @@ function ProductCategory({match}) {
 									<Link to={`/products/${product._id}`}>{product.name}</Link>
 								</Card.Title>
 								<Card.Text>₦{product.price}</Card.Text>
-								<Card.Text className="text-small">{product.category}</Card.Text>
+								<Card.Text className="text-small">{product.category.name}</Card.Text>
                                 { product.countInStock > 0 && (
 								<Button variant="outline-primary" onClick={() => addToCart(product)}>Add To Cart </Button>
                                 )}

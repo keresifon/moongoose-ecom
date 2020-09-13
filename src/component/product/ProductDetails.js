@@ -3,24 +3,37 @@ import { Container, Col, Row, Image, Button, Card } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import {CartContext}  from '../../context/Context';
 import _ from 'lodash';
-import http from '../../services/httpService';
 import { ShoppingCart } from '../../services/cartService';
+import { getProducts } from '../../services/prodService';
 
 
 
 function ProductDetails(props) {
 	const [cart, setCart] = useContext(CartContext);
-	const [products, setProduct] = useState([]);
+	const [products, setProduct] = useState({
+		name: '',
+		price: '',
+		brand: '',
+		description: '',
+		image: '',
+		category: '',
+		trending: '',
+		countInStock: '',
+		tags: '',
+	});
 	const [catProducts, setCatProduct] = useState([]);
 	const [qty, setQty] = useState(1);
 
+	
 	useEffect(() => {
 		const fetchData = async () => {
-			const { data } = await http.get('/products');
+			const { data } = await getProducts();
+			const products = [...data];
 			const productId = props.match.params.id;
-			const product = data.find((p) => p._id === productId);
+			const product = products.find((p) => p._id === productId );
 
 			setProduct(product);
+			
 		};
 		fetchData();
 		//return () => {};
@@ -28,19 +41,20 @@ function ProductDetails(props) {
 
 	useEffect(() => {
 		const fetchCatData = async () => {
-			const { data } = await http.get('/products');
-
+			const { data } = await getProducts();
 			setCatProduct(data);
 		};
 		fetchCatData();
 		//return () => {};
-	}, [props.match.params.id]);
+	}, []);
 
+
+	
    
    const  addToCart =  ShoppingCart(cart, products, qty, setCart);
 
 	const catproduct = catProducts.filter(
-		(cat) => cat.category === products.category && cat._id !== props.match.params.id
+		(cat) => cat.category.name === products.category.name && cat._id !== props.match.params.id
 	);
 
 	const sortedCat = _.orderBy(catproduct, ['date'], ['desc'])
@@ -57,8 +71,8 @@ function ProductDetails(props) {
 				<Col sm={4}>
 					<div className="h4  py-3">{products.name}</div>
 					<div className="font-weight-bold  border-bottom text-danger">₦{products.price}</div>
-					<div className="py-1">Brand : {products.brand}</div>
-					<div className="py-3 text-small">{products.category}</div>
+					 <div className="py-1">Brand : {products.brand.name}</div>   
+					 <div className="py-3 text-small">{products.category.name}</div> 
 					<div className="">Description</div>
 					<div className=""> {products.description}</div>
 				</Col>
@@ -124,7 +138,7 @@ function ProductDetails(props) {
 									<Link to={`/products/${product._id}`}>{product.name}</Link>
 								</Card.Title>
 								<Card.Text>${product.price}</Card.Text>
-								<Card.Text className="text-small">{product.category}</Card.Text>
+								<Card.Text className="text-small">{product.category.name}</Card.Text>
 								{/* <Button variant="outline-primary">Buy </Button> */}
 							</Card.Body>
 						</Card>

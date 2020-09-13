@@ -17,6 +17,7 @@ const user = useContext(UserContext);
 				{user && user.isAdmin && (<Nav.Link as={Link} to="/addproduct">
 								Add Prod
 							</Nav.Link> )}
+               
         {!user && (
 							<Nav.Link as={Link} to="/register">
 								Sign Up

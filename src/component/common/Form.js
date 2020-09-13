@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Joi from 'joi-browser';
 import Input from './Input'
-//import Select from './Select'
+
+import Select from './Select'
+import File from './File';
 
 
 
@@ -52,9 +54,12 @@ function Form(data, schema, props, setData) {
    
 	const renderButton = (label) => {
 		return (
-         <button disabled={validate()} className="btn btn-primary">
+         <button  className="btn btn-primary">
 				{label}
 			</button>
+		// 	 <button disabled={validate()} className="btn btn-primary">
+		// 	 {label}
+		//  </button>
     
 			
            
@@ -74,21 +79,33 @@ function Form(data, schema, props, setData) {
 				 />;
 	};
 
-	// const renderSelect = ( name , label , options) => {
-       
-	// 	return (
-	// 		<Select
-	// 			name={name}
-	// 			value={data[name]}
-	// 			label={label}
-	// 			options={options}
-	// 			onChange={handleChange}
-	// 			error={errors[name]}
-				
-	// 		/>
-	// 	);
-	// }
-	return { validate, handleSubmit, handleChange, renderButton, renderInput };
+	const renderFile = (name, label, type = 'file')=> {
+		return <File 
+		         type={type}
+				 name={name} 
+				 value={data[name]} 
+				 label={label} 
+				 onChange={handleChange} 
+				 error={errors[name]} 
+				 />;
+	};
+
+	const renderSelect = (name, label, options) => {
+		
+		return (
+			<Select
+				name={name}
+				value={data[name]}
+				label={label}
+				options={options}
+				onChange={handleChange}
+				error={errors[name]}
+			/>
+		);
+	};
+	
+	
+	return { validate, handleSubmit, handleChange, renderButton, renderInput,renderFile,renderSelect};
 }
 
 export default Form;

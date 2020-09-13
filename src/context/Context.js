@@ -18,5 +18,11 @@ export const CartConsumer = CartContext.Consumer
 
  export const OrderProvider = OrderContext.Provider
  export const OrderConsumer = OrderContext.Consumer
+
+ //ImageUpload Context
+ const ImgUpContext = React.createContext();
+
+ export const ImgUpProvider = ImgUpContext.Provider
+ export const ImgUpConsumer = ImgUpContext.Consumer
  
-export { CartContext , UserContext,  OrderContext  } 
+export { CartContext , UserContext,  OrderContext, ImgUpContext} 

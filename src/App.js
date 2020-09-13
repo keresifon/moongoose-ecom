@@ -9,14 +9,15 @@ import Home from './component/Home';
 import Footer from './component/Footer';
 import ProductCategory from './component/product/ProductCategory';
 import Cart from './component/product/Cart';
-import { CartProvider, UserProvider, OrderProvider  } from './context/Context';
+import { CartProvider, UserProvider, OrderProvider, ImgUpProvider  } from './context/Context';
 import LoginForm from './component/LoginForm';
 import Logout from './component/Logout';
 import Register from './component/Register';
 import Checkout from './component/checkout/Checkout';
 import AddProduct from './component/product/AddProduct';
-import UpdateTest from './component/product/UpdateTest';
+//import UpdateTest from './component/product/UpdateTest';
 import ThankYou from './component/checkout/ThankYou';
+
 
 
 
@@ -24,6 +25,7 @@ function App(props) {
 	const [cart, setCart] = useState([]);
 	const [user, setUser] = useState({});
 	const [order, setOrder] = useState({});
+	const [imageUrl, setImageUrl] = useState('')
 
 	useEffect(() => {
 		const user = auth.getCurrentUser();
@@ -34,6 +36,7 @@ function App(props) {
 		<>
 			<CartProvider value={[cart, setCart]}>
 			 <OrderProvider value = {[order, setOrder]}	>
+             <ImgUpProvider value = { [imageUrl, setImageUrl]}>
 					<UserProvider value={user}>
 						<NavBar />
 						<div className="pb-100">
@@ -57,6 +60,7 @@ function App(props) {
 
 						<Footer />
 					</UserProvider>
+					</ImgUpProvider>
 					</OrderProvider>
 			</CartProvider>
 		</>

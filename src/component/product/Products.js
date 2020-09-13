@@ -1,29 +1,30 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Card, Button } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import http from '../../services/httpService';
 import {CartContext}  from '../../context/Context';
 import { ShoppingBasket } from '../../services/cartService';
 import _ from 'lodash';
+import { getProducts } from '../../services/prodService';
 
 function Products(props) {
-	const [products, setProduct] = useState([]);
+	const [products, setProduct] = useState();
 	const [cart, setCart] = useContext(CartContext);
 	const [qty] = useState(1);
 
 	useEffect(() => {
-		const fetchData = async () => {
-			const { data } = await http.get('/products');
-			setProduct(data);
-		};
-		fetchData();
-		//return () => {};
-	}, []);
+		async function gProducts() {
+			const { data } = await getProducts();
+			const products = [...data];
+			setProduct(products);
+		}
+		gProducts();
+  }, []);
 
 	
 	const sortedProducts = _.orderBy(products, ['date'], ['desc'])
 	
 	const  addToCart =  ShoppingBasket (cart, qty, setCart);
+	
 
 	return (
 		<>
@@ -47,11 +48,12 @@ function Products(props) {
 											<Link to={`/products/${product._id}`}>{product.name}</Link>
 										</Card.Title>
 										<Card.Text>₦{product.price}</Card.Text>
-										<Card.Text className="text-small"><Link to={`/product/${product.category}`}>{product.category}</Link></Card.Text>
+										<Card.Text className="text-small"><Link to={`/product/${product.category.name}`}>{product.category.name}</Link></Card.Text>
 										{ product.countInStock > 0 && (
-										<Card.Text><Button variant="outline-primary"  onClick={() => addToCart(product)}>Add to Cart </Button></Card.Text> )}
+										<Card.Text><Button variant="outline-primary btn-block"  onClick={() => addToCart(product)}>Add to Cart </Button></Card.Text> )}
 										{ product.countInStock > 0 && (
-										<Button variant="outline-primary">Buy Now </Button> )}
+											<Button variant="outline-primary btn-block" onClick={() => addToCart(product)} as={Link} to="/cart" >Buy Now</Button>
+										)}
 									</Card.Body>
 								</Card>
 							</div>
