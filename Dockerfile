@@ -1,6 +1,6 @@
-FROM node:14.8.0
+FROM node:12-alpine
 WORKDIR /ecomweb
 COPY . .
 RUN npm install
-EXPOSE 3000
 CMD ["npm", "start"]
+EXPOSE 3000
