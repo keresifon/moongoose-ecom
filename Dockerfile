@@ -1,6 +1,16 @@
-FROM node:14.8.0
+FROM node:12-alpine
+RUN addgroup app && adduser -S -G app app 
+USER app
 WORKDIR /ecomweb
-COPY . .
+COPY package*.json .
 RUN npm install
+COPY . .
 EXPOSE 3000
 CMD ["npm", "start"]
+
+
+
+
+
+
+
